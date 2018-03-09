@@ -1,0 +1,21 @@
+.MsgInput {
+  width: 600px;
+  margin: 0px auto;
+  display: grid;
+  height: 50px;
+  grid-template-columns: 1fr 150px;
+  border: 1px solid black;
+  border-top: none; }
+  .MsgInput input {
+    border: none; }
+  .MsgInput input[type="text"] {
+    padding-left: 15px;
+    font-size: 22px; }
+  .MsgInput input[type="submit"] {
+    background: #CC1B47;
+    color: white;
+    display: flex;
+    font-size: 20px;
+    transition: 0.3s; }
+    .MsgInput input[type="submit"]:hover {
+      background: #040B35; }
