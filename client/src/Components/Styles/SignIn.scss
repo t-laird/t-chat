@@ -1,0 +1,73 @@
+$accent: #CC1B47;
+@mixin link-styles {
+  display: flex;
+  height: 50px;
+  border: 1px solid black;
+  a {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    &:hover {
+      color: white;
+      background: $accent;
+    }
+    &:visited {
+      color: black;
+    }
+    &:nth-of-type(1) {
+      border-right: 1px solid black;
+    }
+  }
+}
+
+.SignIn {
+  display: grid;
+  width: 600px;
+  grid-template-columns: 1fr;
+  margin: 50px auto 0px;
+
+  input {
+    height: 45px;
+    font-size: 25px;
+    border: 1px solid black;
+  }
+
+  span {
+    color: red;
+    min-height: 25px;
+  }
+
+  input[type="text"], input[type="password"] {
+    padding-left: 10px;
+  }
+
+  .signin {
+    display: grid;
+    grid-template-columns: 90px 50px 1fr;
+    height: 50px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    label {
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      padding-left: 10px;
+    }
+    input[type="submit"] {
+      background: rgb(29, 29, 29);
+      color: white;
+      transition: 0.3s; 
+      height: 100%;
+      &:hover {
+        background: $accent;
+      }
+    }
+  }
+
+
+  .links {
+    @include link-styles;
+  }
+}
