@@ -4,7 +4,6 @@
   "proxy": "http://localhost:5000",
   "private": true,
   "dependencies": {
-    "knex": "^0.14.4",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "1.1.1",
