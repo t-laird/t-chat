@@ -1,0 +1,27 @@
+{
+  "name": "newhome",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "client": "cd client && npm start",
+    "server": "nodemon server.js",
+    "build-css": "node-sass-chokidar client/src/ -o client/src/",
+    "watch-css": "npm run build-css && node-sass-chokidar client/src/ -o client/src/ --watch --recursive",
+    "dev": "concurrently \"yarn client\" \"yarn server\" \"yarn watch-css\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "http": "^0.0.0",
+    "node-sass-chokidar": "^1.0.1",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "socket.io": "^2.0.4"
+  }
+}
