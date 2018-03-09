@@ -1,7 +1,7 @@
 # Web Socket Project
 ### Thomas Laird
 
-![logo](./src/logo.png)
+![logo](./client/src/logo.png)
 
 
 
