@@ -74,9 +74,6 @@ class App extends Component {
   }
 
   updatesn = async (newsn) => {
-    console.log('hi');
-    console.log(newsn);
-
     if (newsn) {
       const update = await fetch(`/api/users/${this.state.user.id}`, {
         method: 'PATCH',
