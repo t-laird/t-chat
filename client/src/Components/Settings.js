@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import './Styles/Settings.css';
 
 class Settings extends Component {
-  componentDidMount() {
-    console.log('cdm')
+  componentWillMount() {
+    const { user } = this.props;    
+    if (!user.sn || (/guest/).test(user.sn)) {
+      this.props.history.push("/");
+    }
   }
 
   handleSubmit = (e) => {
