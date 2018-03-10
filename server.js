@@ -161,7 +161,13 @@ app.get('/api/guest', (req, res) => {
     });
 });
 
-app.patch('/api/users/:id', (req, res) => {
+app.patch('/api/users/:id', async (req, res) => {
+  const snAvail = !!! await getUser(req.body.newsn, 'sn');
+
+  if (!snAvail) {
+    return res.sendStatus(500);
+  }
+
   return database('users').where('id', req.params.id).update({sn: req.body.newsn})
     .then(() => {
       return res.sendStatus(204);
