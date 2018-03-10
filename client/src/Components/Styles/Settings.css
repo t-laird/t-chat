@@ -21,3 +21,9 @@
     border: none; }
     .Settings input[type="submit"]:hover {
       background: #CC1B47; }
+  .Settings span {
+    font-size: 20px;
+    color: red;
+    text-align: center;
+    min-height: 30px;
+    grid-column: span 2; }
