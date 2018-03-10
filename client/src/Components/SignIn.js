@@ -43,9 +43,9 @@ class SignIn extends Component {
 
     if (sendRes.error) {
       this.setState({error: sendRes.error});
-      return setTimeout(2000, () => {
+      return setTimeout(() => {
         this.setState({error: null});
-      });
+      }, 2000);
     }
 
     this.props.history.push("/");
@@ -72,7 +72,7 @@ class SignIn extends Component {
         </div>
         <div className="links">
           <Link to="/">HOME</Link>
-          <Link to="/signup">Sign Up</Link>
+          <Link to="/signin/signup">Sign Up</Link>
         </div>
       </form>
     );
