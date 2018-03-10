@@ -126,9 +126,9 @@ const getUser = (query, param) => {
 };
 
 app.get('/api/recentmessages', (req, res) => {
-  return database('messages').limit(20)
+  return database('messages').orderBy('created_at', 'desc').limit(20)
     .then(messages => {
-      return res.status(200).json({ messages });
+      return res.status(200).json({ messages: messages.reverse() });
     })
     .catch(err => {
       return res.status(500).json({ error: 'Error retrieving messages' });

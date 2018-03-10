@@ -1,13 +1,14 @@
 .Nav {
   display: grid;
-  // grid-template-columns: repeat(3, 150px);
   margin: 0px auto;
   justify-content: center;
-
+  
+  
   a, span {
     padding: 10px;
     font-size: 20px;
     color: black;
+    box-shadow: 5px 4px 4px black;  
     background: #CC1B47;
     text-align: center;
     border-bottom: 1px solid black;

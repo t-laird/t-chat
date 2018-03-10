@@ -69,21 +69,21 @@ class App extends Component {
         <Header user={this.state.user} />
         <Nav signout={this.signout} user={this.state.user}/>
         <Switch>
+          <Route path="/signin/signup" render={(props) => {
+            return (
+              <SignUp signInUser={this.signInUser} {...props}/>
+            );
+          }} />          
           <Route path="/signin" render={(props) => {
             return (
               <SignIn signInUser={this.signInUser} {...props}/>
             );
           }} />
-          <Route path="/signup" render={(props) => {
-            return (
-              <SignUp signInUser={this.signInUser} {...props}/>
-            );
-          }} />          
           <Route path="/" render={(props) => {
             return (
               <Fragment>
                 <Messages user={this.state.user} messages={this.state.messages} {...props}/>
-                <MsgInput sendMessage={this.sendMessage}/>
+                <MsgInput user={this.state.user} sendMessage={this.sendMessage}/>
               </Fragment>
             );
           }} />

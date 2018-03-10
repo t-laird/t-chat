@@ -6,8 +6,26 @@ $accent: #040B35;
   display: grid;
   height: 50px;
   grid-template-columns: 1fr 150px;
-  border: 1px solid black;
   border-top: none; 
+  box-shadow: 5px 4px 4px black;  
+
+  h3 {
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-column: span 2;
+    background: rgba(255, 255, 255, 0.694);
+    border-radius: 5px;
+
+    a {
+      color: black;
+      margin-left: 10px;
+      &:active {
+        color: black;
+      }
+    }
+  }
 
   input {
     border: none;
@@ -16,6 +34,8 @@ $accent: #040B35;
   input[type="text"] {
     padding-left: 15px;
     font-size: 22px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
   }
 
   input[type="submit"] {
@@ -24,6 +44,8 @@ $accent: #040B35;
     display: flex;
     font-size: 20px;
     transition: 0.3s;
+    border-bottom-right-radius: 5px;    
+    border-top-right-radius: 5px;    
     &:hover {
       background: $accent;
     }

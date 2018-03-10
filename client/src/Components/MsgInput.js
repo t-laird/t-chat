@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './Styles/MsgInput.css';
 
 class MsgInput extends Component {
@@ -21,13 +22,25 @@ class MsgInput extends Component {
     this.setState({ msg: '' });
   }
 
+  renderForm = () => {
+    if (this.props.user.sn) {
+      return (
+        <form onSubmit={this.handleSubmit} className="MsgInput">
+          <input onChange={this.handleChange} type="text" placeholder="Enter your message" value={this.state.msg} name="msg" />
+          <input onClick={this.handleSubmit} type="submit" value="Send Message" />
+        </form>
+      );
+    } else {
+      return (
+        <div className="MsgInput">
+          <h3>Please Sign in to Chat (guest option)  <Link to="/signin">Sign In</Link></h3>
+        </div>
+      );
+    }
+  }
+
   render() {
-    return (
-      <form onSubmit={this.handleSubmit} className="MsgInput">
-        <input onChange={this.handleChange} type="text" placeholder="Enter your message" value={this.state.msg} name="msg" />
-        <input onClick={this.handleSubmit} type="submit" value="Send Message" />
-      </form>
-    );
+    return this.renderForm();
   }
 }
 export default MsgInput;
