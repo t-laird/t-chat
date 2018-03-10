@@ -8,6 +8,6 @@ h2 {
 
 .App {
   background-image: url('./bg.svg');
-  background-size: 100% 100%;
+  background-size: cover;
   min-height: 100vh;
 }
