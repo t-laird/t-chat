@@ -12,7 +12,7 @@ class Settings extends Component {
   }
 
   render() {
-    const { user } = this.props;
+    const { user, nameChangeErr } = this.props;
     return (
       <form onSubmit={this.handleSubmit} className="Settings">
         <label>Change your Screenname: (Currently {user.sn})</label>
@@ -23,6 +23,7 @@ class Settings extends Component {
         <input
           type="submit"
           value="Change Screenname" />   
+          <span>{nameChangeErr}</span>
       </form>
     )
   }
