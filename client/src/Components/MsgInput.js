@@ -33,7 +33,7 @@ class MsgInput extends Component {
     } else {
       return (
         <div className="MsgInput">
-          <h3>Please Sign in to Chat (guest option)  <Link to="/signin">Sign In</Link></h3>
+          <h3><Link to="/signin">Sign in to Chat</Link> OR <span onClick={this.props.guest}>Chat as a Guest</span></h3>
         </div>
       );
     }

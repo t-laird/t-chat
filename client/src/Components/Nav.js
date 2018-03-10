@@ -4,7 +4,7 @@ import './Styles/Nav.css';
 
 const Nav = ({ user, signout }) => {
   const renderNavComponents = () => {
-    if (user.sn) {
+    if (user.sn && !(/guest/).test(user.sn)) {
       return (
         <nav style={{ gridTemplateColumns: "repeat(3, 150px)" }} className="Nav">
           <NavLink exact to="/">Home</NavLink>

@@ -13,12 +13,12 @@ class Messages extends Component {
   }
   
   render() {
-    const { user, messages } = this.props;
+    const { messages } = this.props;
     return (
       <div ref={(msgs => this.messages = msgs)} className="Messages">
         {this.renderMessages(messages)}
       </div>
-    )
+    );
   }
 }
 export default Messages;
