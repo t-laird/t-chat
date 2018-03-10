@@ -16,6 +16,7 @@ class App extends Component {
     super();
     this.state = {
       msg: null,
+      nameChangeErr: null,
       messages: [],
       user: {
       }
@@ -82,10 +83,16 @@ class App extends Component {
         },
         body: JSON.stringify({newsn})
       });
-
-      this.socket.emit('namechange', {old: this.state.user.sn, new: newsn});
-
+      
+      if (update.status === 500) {
+        this.setState({ nameChangeErr: 'That name is already taken.'})
+        return setTimeout(() => {
+          this.setState({ nameChangeErr: null })
+        }, 2000);
+      }
+      
       if (update.status === 204) {
+        this.socket.emit('namechange', {old: this.state.user.sn, new: newsn});
         this.setState({ 
           user: Object.assign({}, this.state.user, {sn: newsn})
         });
@@ -114,7 +121,7 @@ class App extends Component {
           }} />
           <Route path="/settings" render={(props) => {
             return (
-              <Settings user={this.state.user} updatesn={this.updatesn} {...props}/>
+              <Settings nameChangeErr={this.state.nameChangeErr} user={this.state.user} updatesn={this.updatesn} {...props}/>
             );
           }} />
           <Route path="/" render={(props) => {
