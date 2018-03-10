@@ -52,6 +52,15 @@ io.on('connection', socket => {
     };
     io.sockets.emit('message', msg);
   });
+
+  socket.on('namechange', info => {
+    const msg = {
+      user: { sn: '🤖CHATBOT🤖' },
+      msg: `${info.old} has changed their name to ${info.new}.`
+    };
+
+    io.sockets.emit('message', msg);
+  });
 });
 
 app.get('/test', (req, res) => {
@@ -74,7 +83,6 @@ app.post('/api/users', async (req, res) => {
   for (const reqParam in reqParams) {
     const param = reqParams[reqParam];
     if (!req.body[param]) {
-      console.log(param);
       return res.status(422).json({error: `Please enter a valid ${paramTranslations[param]}.`});
     }
   }
@@ -105,8 +113,6 @@ app.post('/api/users', async (req, res) => {
 
 app.post('/api/signin', async (req, res) => {
   const user = await getUser(req.body.un, 'un');
-  console.log('getuser return val: ', user);
-  console.log(req.body);
 
   if (!user) {
     return res.status(422).json({error: 'Incorrect username or password.'});
@@ -145,9 +151,25 @@ app.get('/api/users/:id', (req, res) => {
     });
 });
 
+app.get('/api/guest', (req, res) => {
+  return database('users').where('un', 'guest12345').first(['sn', 'id'])
+    .then(user => {
+      return res.status(200).json({ user });
+    })
+    .catch(err => {
+      return res.status(500).json({error: 'Could not fetch guest user.'});
+    });
+});
 
-
-
+app.patch('/api/users/:id', (req, res) => {
+  return database('users').where('id', req.params.id).update({sn: req.body.newsn})
+    .then(() => {
+      return res.sendStatus(204);
+    })
+    .catch(err => {
+      return res.status(500).json({error: 'Error updating screenname'});
+    });
+});
 
 http.listen(app.get('port'), () => {
   console.log(`Server is listening on port ${app.get('port')}`);
