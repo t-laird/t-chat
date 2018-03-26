@@ -3,6 +3,4 @@
 
 ![logo](./client/src/logo.png)
 
-
-
-Work in progress.
+Use of basic websocket inside a React application.
